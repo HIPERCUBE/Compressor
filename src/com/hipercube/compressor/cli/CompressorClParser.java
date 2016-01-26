@@ -2,6 +2,8 @@ package com.hipercube.compressor.cli;
 
 import org.apache.commons.cli.*;
 
+import java.util.List;
+
 /**
  * Copyright (c) 1/26/16 Joowon Ryoo
  * <p>
@@ -35,7 +37,7 @@ public class CompressorClParser extends DefaultParser {
     public CompressorClParser() {
         // Add Options
         options.addOption("l", "location", true, "input directory which original file located");
-        options.addOption("o", "option", true, "output directory which zipped file located");
+        options.addOption("o", "output", true, "output directory which zipped file located");
         options.addOption("r", "repeat", true, "whether to continue to work");
         options.addOption("c", "cycle", true, "operation cycle (milli-second)");
         options.addOption("h", "help", true, "show Compressor helps");
@@ -49,11 +51,16 @@ public class CompressorClParser extends DefaultParser {
      */
     public final boolean process(String[] args) {
         try {
+            // parse arguments
             CommandLine commandLine = parse(options, args);
+            // create CompressorArg from parsed CommandLine
+            CompressorArg compressorArg = getCompressorArgFromCommandLine(commandLine);
+
+            // First check, is argument include help option
+            if (compressorArg.help != null)
+                showHelp(compressorArg.help);
         } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("Error occurred in parsing arguments\nCheck your arguments\n");
-            showUsage();
+            parseFailed();
             return false;
         }
         return true;
@@ -66,5 +73,77 @@ public class CompressorClParser extends DefaultParser {
         HelpFormatter helpFormatter = new HelpFormatter();
         String usage = "Compressor -l <arg> [options]";
         helpFormatter.printHelp(usage, options);
+    }
+
+    public void showHelp(String option) {
+        switch (option) {
+            case "l":
+            case "location":
+                showHelp(CompressorOption.Location);
+                break;
+            case "o":
+            case "output":
+                showHelp(CompressorOption.Output);
+                break;
+            case "r":
+            case "repeat":
+                showHelp(CompressorOption.Repeat);
+                break;
+            case "c":
+            case "cycle":
+                showHelp(CompressorOption.Cycle);
+                break;
+            case "h":
+            case "help":
+                showHelp(CompressorOption.Help);
+                break;
+            default:
+                parseFailed();
+        }
+    }
+
+    public void showHelp(CompressorOption option) {
+        System.out.print(option.name() + ": ");
+        switch (option) {
+            case Location:
+                System.out.println("input directory which original file located");
+                break;
+            case Output:
+                System.out.println("output directory which zipped file located");
+                break;
+            case Repeat:
+                System.out.println("whether to continue to work");
+                break;
+            case Cycle:
+                System.out.println("operation cycle (milli-second)");
+                break;
+            case Help:
+                System.out.println("show Compressor helps");
+                break;
+        }
+    }
+
+    /**
+     * create CompressorArg from parsed CommandLIne
+     *
+     * @param commandLine parsed commandLine
+     * @return CompressorArg which created from commandLine
+     */
+    private CompressorArg getCompressorArgFromCommandLine(CommandLine commandLine) {
+        CompressorArg arg = new CompressorArg();
+        arg.location = commandLine.getOptionValue("l");
+        arg.output = commandLine.getOptionValue("o");
+        arg.repeat = Boolean.parseBoolean(commandLine.getOptionValue("r"));
+        arg.cycle = Integer.parseInt(commandLine.getOptionValue("c"));
+        arg.help = commandLine.getOptionValue("h");
+        return arg;
+    }
+
+    /**
+     * on parse failed
+     */
+    private void parseFailed() {
+        System.out.println("Error occurred in parsing arguments\nCheck your arguments\n");
+        showUsage();
     }
 }

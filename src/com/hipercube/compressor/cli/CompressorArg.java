@@ -1,7 +1,4 @@
-package com.hipercube.compressor;
-
-import com.hipercube.compressor.cli.CompressorClParser;
-import org.apache.commons.cli.*;
+package com.hipercube.compressor.cli;
 
 /**
  * Copyright (c) 1/26/16 Joowon Ryoo
@@ -27,17 +24,10 @@ import org.apache.commons.cli.*;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public class CompressorMain {
-    private static final Options options = new Options();
-
-    public static void main(String[] args) {
-        new CompressorClParser().showUsage();
-    }
-
-    /**
-     * Show how to use Compressor
-     */
-    private void showUsage() {
-
-    }
+public class CompressorArg {
+    public String location;
+    public String output;
+    public boolean repeat;
+    public int cycle;
+    public String help;
 }

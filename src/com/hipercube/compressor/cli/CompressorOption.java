@@ -47,7 +47,7 @@ public enum CompressorOption {
      * <p>
      * whether to continue to work
      */
-    While,
+    Repeat,
 
     /**
      * [Option]
