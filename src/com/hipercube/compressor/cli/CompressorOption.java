@@ -6,33 +6,33 @@ package com.hipercube.compressor.cli;
 public enum CompressorOption {
     /**
      * [Necessary]
-     * Location ( , -l, -L, -location, -Location)
+     * Location
      * <p>
      * input directory which original file located
      */
-    Location,
+    l, L, location, Location,
 
     /**
      * [Option]
-     * Output (-o, -O, -output, -Output)
+     * Output
      * <p>
      * output directory which zipped file located
      */
-    Output,
+    o, O, output, Output,
 
     /**
      * [Option]
-     * While (-w, -W, -while, -While)
+     * Repeat
      * <p>
      * whether to continue to work
      */
-    While,
+    r, R, repeat, Repeat,
 
     /**
      * [Option]
-     * Cycle (-c, -C, -cycle, -Cycle)
+     * Cycle
      * <p>
      * operation cycle (milli-second)
      */
-    Cycle,
+    c, C, cycle, Cycle,
 }
