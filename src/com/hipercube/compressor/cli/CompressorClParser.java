@@ -4,7 +4,7 @@ import org.apache.commons.cli.*;
 
 /**
  * Copyright (c) 1/26/16 Joowon Ryoo
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -13,10 +13,10 @@ import org.apache.commons.cli.*;
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -38,7 +38,7 @@ public class CompressorClParser extends DefaultParser {
         options.addOption("o", "option", true, "output directory which zipped file located");
         options.addOption("r", "repeat", true, "whether to continue to work");
         options.addOption("c", "cycle", true, "operation cycle (milli-second)");
-        options.addOption("h", "help", false, "show Compressor helps");
+        options.addOption("h", "help", true, "show Compressor helps");
     }
 
     /**
@@ -62,7 +62,9 @@ public class CompressorClParser extends DefaultParser {
     /**
      * show how to use Compressor
      */
-    private void showUsage() {
-
+    public void showUsage() {
+        HelpFormatter helpFormatter = new HelpFormatter();
+        String usage = "Compressor -l <arg> [options]";
+        helpFormatter.printHelp(usage, options);
     }
 }

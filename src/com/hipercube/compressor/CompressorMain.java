@@ -1,5 +1,6 @@
 package com.hipercube.compressor;
 
+import com.hipercube.compressor.cli.CompressorClParser;
 import org.apache.commons.cli.*;
 
 /**
@@ -30,17 +31,7 @@ public class CompressorMain {
     private static final Options options = new Options();
 
     public static void main(String[] args) {
-        CommandLineParser commandLineParser = new DefaultParser();
-        CommandLine commandLine;
-
-        try {
-            options.addOption("p", "print", true, "print argument");
-            options.addOption("h", "help", false, "print guideline");
-
-            commandLine = commandLineParser.parse(options, args);
-        } catch (ParseException e) {
-            System.out.println("Error occurred on parse arguments");
-        }
+        new CompressorClParser().showUsage();
     }
 
     /**
