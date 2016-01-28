@@ -131,11 +131,15 @@ public class CompressorClParser extends DefaultParser {
      */
     private CompressorArg getCompressorArgFromCommandLine(CommandLine commandLine) {
         CompressorArg arg = new CompressorArg();
-        arg.location = commandLine.getOptionValue("l");
-        arg.output = commandLine.getOptionValue("o");
-        arg.repeat = Boolean.parseBoolean(commandLine.getOptionValue("r"));
-        arg.cycle = Integer.parseInt(commandLine.getOptionValue("c"));
-        arg.help = commandLine.getOptionValue("h");
+        try {
+            arg.location = commandLine.getOptionValue("l");
+            arg.output = commandLine.getOptionValue("o");
+            arg.repeat = Boolean.parseBoolean(commandLine.getOptionValue("r") != null ? commandLine.getOptionValue("r") : "false");
+            arg.cycle = Integer.parseInt(commandLine.getOptionValue("c") != null ? commandLine.getOptionValue("c") : "10");
+            arg.help = commandLine.getOptionValue("h");
+        } catch (Exception e) {
+            parseFailed();
+        }
         return arg;
     }
 

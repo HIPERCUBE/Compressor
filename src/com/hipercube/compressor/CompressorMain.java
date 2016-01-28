@@ -31,7 +31,7 @@ public class CompressorMain {
     private static final Options options = new Options();
 
     public static void main(String[] args) {
-        new CompressorClParser().showUsage();
+        new CompressorClParser().process(args);
     }
 
     /**
