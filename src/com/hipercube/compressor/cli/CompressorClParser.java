@@ -54,9 +54,17 @@ public class CompressorClParser extends DefaultParser {
             // create CompressorArg from parsed CommandLine
             CompressorArg compressorArg = getCompressorArgFromCommandLine(commandLine);
 
-            // First check, is argument include help option
-            if (compressorArg.help != null)
+            // Check is argument include help option
+            if (compressorArg.help != null) {
                 showHelp(compressorArg.help);
+                return false;
+            }
+            // Check necessary argument 'location'
+            if (compressorArg.location == null) {
+                System.out.println("'location' argument is necessary.\n");
+                showUsage();
+                return false;
+            }
         } catch (ParseException e) {
             parseFailed();
             return false;
