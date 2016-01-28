@@ -61,7 +61,7 @@ public class CompressorClParser extends DefaultParser {
             }
             // Check necessary argument 'location'
             if (compressorArg.location == null) {
-                System.out.println("'location' argument is necessary.\n");
+                System.out.println("'location' argument is necessary.");
                 showUsage();
                 return false;
             }
@@ -78,6 +78,7 @@ public class CompressorClParser extends DefaultParser {
     public void showUsage() {
         HelpFormatter helpFormatter = new HelpFormatter();
         String usage = "Compressor -l <arg> [options]";
+        System.out.println();
         helpFormatter.printHelp(usage, options);
     }
 
