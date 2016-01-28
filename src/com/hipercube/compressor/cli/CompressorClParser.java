@@ -2,8 +2,6 @@ package com.hipercube.compressor.cli;
 
 import org.apache.commons.cli.*;
 
-import java.util.List;
-
 /**
  * Copyright (c) 1/26/16 Joowon Ryoo
  * <p>

@@ -33,11 +33,4 @@ public class CompressorMain {
     public static void main(String[] args) {
         new CompressorClParser().process(args);
     }
-
-    /**
-     * Show how to use Compressor
-     */
-    private void showUsage() {
-
-    }
 }
