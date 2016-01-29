@@ -49,7 +49,8 @@ public class CompressorClParser extends DefaultParser {
      * @param args arguments
      * @return result is success
      */
-    public final boolean process(String[] args) {
+    public final CreateOption process(String[] args) {
+        CreateOption createOption = null;
         try {
             // parse arguments
             CommandLine commandLine = parse(options, args);
@@ -59,20 +60,23 @@ public class CompressorClParser extends DefaultParser {
             // Check is argument include help option
             if (compressorArg.help != null) {
                 showHelp(compressorArg.help);
-                return false;
+                return null;
             }
 
             // Check necessary argument 'location'
             if (compressorArg.location == null) throw new LocationNotFoundException();
+
+            // Create CreateOption
+            createOption = new CreateOption(compressorArg);
         } catch (ClParseException e) {
             e.printError();
             showUsage();
-            return false;
+            return null;
         } catch (ParseException e) {
             parseFailed();
-            return false;
+            return null;
         }
-        return true;
+        return createOption;
     }
 
     /**
