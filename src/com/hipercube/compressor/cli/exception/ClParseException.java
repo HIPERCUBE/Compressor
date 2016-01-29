@@ -24,7 +24,7 @@ package com.hipercube.compressor.cli.exception;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public class ClParseException {
+public class ClParseException extends Exception {
     /**
      * Error detail
      */

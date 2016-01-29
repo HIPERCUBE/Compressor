@@ -1,5 +1,7 @@
 package com.hipercube.compressor.cli;
 
+import com.hipercube.compressor.cli.exception.ClParseException;
+import com.hipercube.compressor.cli.exception.LocationNotFoundException;
 import org.apache.commons.cli.*;
 
 /**
@@ -59,14 +61,15 @@ public class CompressorClParser extends DefaultParser {
                 showHelp(compressorArg.help);
                 return false;
             }
+
             // Check necessary argument 'location'
-            if (compressorArg.location == null) {
-                System.out.println("'location' argument is necessary.");
-                showUsage();
-                return false;
-            }
+            if (compressorArg.location == null) throw new LocationNotFoundException();
         } catch (ParseException e) {
             parseFailed();
+            return false;
+        } catch (ClParseException e) {
+            e.printError();
+            showUsage();
             return false;
         }
         return true;
