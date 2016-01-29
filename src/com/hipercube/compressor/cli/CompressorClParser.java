@@ -64,12 +64,12 @@ public class CompressorClParser extends DefaultParser {
 
             // Check necessary argument 'location'
             if (compressorArg.location == null) throw new LocationNotFoundException();
-        } catch (ParseException e) {
-            parseFailed();
-            return false;
         } catch (ClParseException e) {
             e.printError();
             showUsage();
+            return false;
+        } catch (ParseException e) {
+            parseFailed();
             return false;
         }
         return true;

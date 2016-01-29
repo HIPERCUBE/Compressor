@@ -1,7 +1,7 @@
 package com.hipercube.compressor.cli.exception;
 
 /**
- * Copyright (c) 1/29/16 Joowon Ryoo
+ * Copyright (c) 1/30/16 Joowon Ryoo
  * <p>
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -24,13 +24,13 @@ package com.hipercube.compressor.cli.exception;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public final class LocationNotFoundException extends ClParseException {
+public final class InvalidFilePathException extends ClParseException {
     /**
      * Constructor
      * <p>
      * set Error detail
      */
-    public LocationNotFoundException() {
-        super("'location' argument is necessary.");
+    public InvalidFilePathException() {
+        super("File path is invalid.");
     }
 }
