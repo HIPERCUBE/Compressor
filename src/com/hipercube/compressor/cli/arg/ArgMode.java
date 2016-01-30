@@ -1,5 +1,6 @@
 package com.hipercube.compressor.cli.arg;
 
+import com.hipercube.compressor.cli.exception.InvalidModeException;
 import com.sun.org.apache.xpath.internal.Arg;
 
 /**
@@ -43,10 +44,16 @@ public class ArgMode {
         this.mode = isZip ? MODE.ZIP : MODE.UNZIP;
     }
 
-    public ArgMode(String isZip) {
-        if (isZip.equals(MODE_ZIP))
-            this.mode = MODE.ZIP;
-        else if (isZip.equals(MODE_UNZIP))
-            this.mode = MODE.UNZIP;
+    public ArgMode(String isZip) throws InvalidModeException {
+        switch (isZip) {
+            case MODE_ZIP:
+                this.mode = MODE.ZIP;
+                break;
+            case MODE_UNZIP:
+                this.mode = MODE.UNZIP;
+                break;
+            default:
+                throw new InvalidModeException();
+        }
     }
 }
