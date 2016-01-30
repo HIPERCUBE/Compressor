@@ -30,20 +30,39 @@ import com.sun.org.apache.xpath.internal.Arg;
 public class ArgMode {
     public enum MODE {ZIP, UNZIP}
 
+    /**
+     * Statement Variable pointing to mode
+     */
     public MODE mode;
 
     public static final String MODE_ZIP = "zip";
     public static final String MODE_UNZIP = "unzip";
     public static final String detail = "mode parameter only required 'zip' or 'unzip'";
 
+    /**
+     * Constructor
+     * <p>
+     * Default mode option is MODE.ZIP
+     */
     public ArgMode() {
         this.mode = MODE.ZIP;
     }
 
+    /**
+     * Constructor
+     *
+     * @param isZip true : MODE.ZIP, false : MODE.UNZIP
+     */
     public ArgMode(boolean isZip) {
         this.mode = isZip ? MODE.ZIP : MODE.UNZIP;
     }
 
+    /**
+     * Constructor
+     *
+     * @param isZip string mode parameter
+     * @throws InvalidModeException invalid mode string exception
+     */
     public ArgMode(String isZip) throws InvalidModeException {
         switch (isZip) {
             case MODE_ZIP:
