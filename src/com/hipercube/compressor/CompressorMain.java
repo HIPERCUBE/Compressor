@@ -1,6 +1,7 @@
 package com.hipercube.compressor;
 
 import com.hipercube.compressor.cli.CompressorClParser;
+import com.hipercube.compressor.cli.CreateOption;
 import org.apache.commons.cli.*;
 
 /**
@@ -31,6 +32,8 @@ public class CompressorMain {
     private static final Options options = new Options();
 
     public static void main(String[] args) {
-        new CompressorClParser().process(args);
+        CreateOption createOption = new CompressorClParser().process(args);
+        if (createOption == null) return;
+        // TODO : Operate Compressor with CreateOption
     }
 }
