@@ -1,6 +1,6 @@
-package com.hipercube.compressor.cli.arg;
+package com.hipercube.compressor.cli.exception;
 
-import com.sun.org.apache.xpath.internal.Arg;
+import com.hipercube.compressor.cli.arg.ArgMode;
 
 /**
  * Copyright (c) 1/30/16 Joowon Ryoo
@@ -26,27 +26,13 @@ import com.sun.org.apache.xpath.internal.Arg;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public class ArgMode {
-    public enum MODE {ZIP, UNZIP}
-
-    public MODE mode;
-
-    public static final String MODE_ZIP = "zip";
-    public static final String MODE_UNZIP = "unzip";
-    public static final String detail = "mode parameter only required 'zip' or 'unzip'";
-
-    public ArgMode() {
-        this.mode = MODE.ZIP;
-    }
-
-    public ArgMode(boolean isZip) {
-        this.mode = isZip ? MODE.ZIP : MODE.UNZIP;
-    }
-
-    public ArgMode(String isZip) {
-        if (isZip.equals(MODE_ZIP))
-            this.mode = MODE.ZIP;
-        else if (isZip.equals(MODE_UNZIP))
-            this.mode = MODE.UNZIP;
+public class InvalidModeException extends ClParseException {
+    /**
+     * Constructor
+     * <p>
+     * set Error detail
+     */
+    public InvalidModeException() {
+        super("'mode' parameter is invalid.\n" + ArgMode.detail);
     }
 }
