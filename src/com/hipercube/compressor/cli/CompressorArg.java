@@ -25,10 +25,10 @@ package com.hipercube.compressor.cli;
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 public class CompressorArg {
+    public String mode;
     public String source;
     public String output;
     public boolean repeat;
     public int cycle;
     public String help;
-    public String mode;
 }

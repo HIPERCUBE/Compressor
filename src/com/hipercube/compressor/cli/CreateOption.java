@@ -1,6 +1,9 @@
 package com.hipercube.compressor.cli;
 
+import com.hipercube.compressor.cli.arg.ArgMode;
+import com.hipercube.compressor.cli.exception.ClParseException;
 import com.hipercube.compressor.cli.exception.InvalidFilePathException;
+import com.hipercube.compressor.cli.exception.InvalidModeException;
 
 import java.io.File;
 
@@ -29,19 +32,30 @@ import java.io.File;
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 public class CreateOption {
+    private ArgMode mode;
     private File source;
     private File output;
     public boolean repeat;
     public int cycle;
     public String help;
 
-    public CreateOption(CompressorArg arg) throws InvalidFilePathException {
+    public CreateOption(CompressorArg arg) throws ClParseException {
+        // set mode
+        setMode(arg.mode);
         // set source
         if (arg.source != null)
             setSource(arg.source);
         // set output
         if (arg.output != null)
             setOutput(arg.output);
+    }
+
+    public ArgMode getMode() {
+        return mode;
+    }
+
+    public void setMode(String modeString) throws InvalidModeException {
+        this.mode = new ArgMode(modeString);
     }
 
     /**
