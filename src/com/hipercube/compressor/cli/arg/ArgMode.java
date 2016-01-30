@@ -63,6 +63,12 @@ public class ArgMode {
      * @throws InvalidModeException invalid mode string exception
      */
     public ArgMode(String isZip) throws InvalidModeException {
+        // if isZip string is empty, set default 'ZIP'
+        if (isZip == null || isZip.equals("")) {
+            this.mode = MODE.ZIP;
+            return;
+        }
+        // parse isZip string
         switch (isZip) {
             case MODE_ZIP:
                 this.mode = MODE.ZIP;

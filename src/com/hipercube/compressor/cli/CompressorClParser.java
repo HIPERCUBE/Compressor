@@ -147,6 +147,7 @@ public class CompressorClParser extends DefaultParser {
     private CompressorArg getCompressorArgFromCommandLine(CommandLine commandLine) {
         CompressorArg arg = new CompressorArg();
         try {
+            arg.mode = commandLine.getOptionValue("m");
             arg.source = commandLine.getOptionValue("s");
             arg.output = commandLine.getOptionValue("o");
             arg.repeat = Boolean.parseBoolean(commandLine.getOptionValue("r") != null ? commandLine.getOptionValue("r") : "false");
@@ -162,7 +163,7 @@ public class CompressorClParser extends DefaultParser {
      * on parse failed
      */
     private void parseFailed() {
-        System.out.println("Error occurred in parsing arguments\nCheck your arguments\n");
+        System.out.println("Error occurred in parsing arguments\nCheck your arguments");
         showUsage();
     }
 }
