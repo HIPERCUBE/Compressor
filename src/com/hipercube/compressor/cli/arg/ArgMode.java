@@ -1,7 +1,9 @@
-package com.hipercube.compressor.cli;
+package com.hipercube.compressor.cli.arg;
+
+import com.sun.org.apache.xpath.internal.Arg;
 
 /**
- * Copyright (c) 1/26/16 Joowon Ryoo
+ * Copyright (c) 1/30/16 Joowon Ryoo
  * <p>
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -24,11 +26,26 @@ package com.hipercube.compressor.cli;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public class CompressorArg {
-    public String location;
-    public String output;
-    public boolean repeat;
-    public int cycle;
-    public String help;
-    public String mode;
+public class ArgMode {
+    public enum MODE {ZIP, UNZIP}
+
+    public MODE mode;
+
+    public static final String MODE_ZIP = "zip";
+    public static final String MODE_UNZIP = "unzip";
+
+    public ArgMode() {
+        this.mode = MODE.ZIP;
+    }
+
+    public ArgMode(boolean isZip) {
+        this.mode = isZip ? MODE.ZIP : MODE.UNZIP;
+    }
+
+    public ArgMode(String isZip) {
+        if (isZip.equals(MODE_ZIP))
+            this.mode = MODE.ZIP;
+        else if (isZip.equals(MODE_UNZIP))
+            this.mode = MODE.UNZIP;
+    }
 }
