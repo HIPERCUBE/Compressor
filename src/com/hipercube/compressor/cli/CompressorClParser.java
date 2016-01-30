@@ -36,7 +36,7 @@ public class CompressorClParser extends DefaultParser {
      */
     public CompressorClParser() {
         // Add Options
-        options.addOption("l", "location", true, "input directory which original file located");
+        options.addOption("s", "source", true, "source directory which original file located");
         options.addOption("o", "output", true, "output directory which zipped file located");
         options.addOption("r", "repeat", true, "whether to continue to work");
         options.addOption("c", "cycle", true, "operation cycle (milli-second)");
@@ -64,7 +64,7 @@ public class CompressorClParser extends DefaultParser {
             }
 
             // Check necessary argument 'location'
-            if (compressorArg.location == null) throw new LocationNotFoundException();
+            if (compressorArg.source == null) throw new LocationNotFoundException();
 
             // Create CreateOption
             createOption = new CreateOption(compressorArg);
@@ -91,9 +91,9 @@ public class CompressorClParser extends DefaultParser {
 
     public void showHelp(String option) {
         switch (option) {
-            case "l":
-            case "location":
-                showHelp(CompressorOption.Location);
+            case "s":
+            case "source":
+                showHelp(CompressorOption.Source);
                 break;
             case "o":
             case "output":
@@ -119,8 +119,8 @@ public class CompressorClParser extends DefaultParser {
     public void showHelp(CompressorOption option) {
         System.out.print(option.name() + ": ");
         switch (option) {
-            case Location:
-                System.out.println("input directory which original file located");
+            case Source:
+                System.out.println("source directory which original file located");
                 break;
             case Output:
                 System.out.println("output directory which zipped file located");
@@ -146,7 +146,7 @@ public class CompressorClParser extends DefaultParser {
     private CompressorArg getCompressorArgFromCommandLine(CommandLine commandLine) {
         CompressorArg arg = new CompressorArg();
         try {
-            arg.location = commandLine.getOptionValue("l");
+            arg.source = commandLine.getOptionValue("s");
             arg.output = commandLine.getOptionValue("o");
             arg.repeat = Boolean.parseBoolean(commandLine.getOptionValue("r") != null ? commandLine.getOptionValue("r") : "false");
             arg.cycle = Integer.parseInt(commandLine.getOptionValue("c") != null ? commandLine.getOptionValue("c") : "10");

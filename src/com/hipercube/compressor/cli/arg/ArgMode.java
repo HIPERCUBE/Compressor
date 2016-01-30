@@ -1,7 +1,6 @@
 package com.hipercube.compressor.cli.arg;
 
 import com.hipercube.compressor.cli.exception.InvalidModeException;
-import com.sun.org.apache.xpath.internal.Arg;
 
 /**
  * Copyright (c) 1/30/16 Joowon Ryoo

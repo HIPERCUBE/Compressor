@@ -27,11 +27,11 @@ package com.hipercube.compressor.cli;
 public enum CompressorOption {
     /**
      * [Necessary]
-     * Location (-l, -location)
+     * Source (-s, -source)
      * <p>
-     * input directory which original file located
+     * source directory which original file located
      */
-    Location,
+    Source,
 
     /**
      * [Option]

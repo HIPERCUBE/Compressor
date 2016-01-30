@@ -29,39 +29,39 @@ import java.io.File;
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 public class CreateOption {
-    private File location;
+    private File source;
     private File output;
     public boolean repeat;
     public int cycle;
     public String help;
 
     public CreateOption(CompressorArg arg) throws InvalidFilePathException {
-        // set location
-        if (arg.location != null)
-            setLocation(arg.location);
+        // set source
+        if (arg.source != null)
+            setSource(arg.source);
         // set output
         if (arg.output != null)
             setOutput(arg.output);
     }
 
     /**
-     * location getter
+     * source getter
      *
-     * @return location file
+     * @return source file
      */
-    public File getLocation() {
-        return location;
+    public File getSource() {
+        return source;
     }
 
     /**
-     * location setter
+     * source setter
      *
-     * @param locationPath location file path
+     * @param sourcePath source file path
      * @throws InvalidFilePathException invalid file path exception
      */
-    public void setLocation(String locationPath) throws InvalidFilePathException {
-        this.location = new File(locationPath);
-        if (!location.exists()) throw new InvalidFilePathException();
+    public void setSource(String sourcePath) throws InvalidFilePathException {
+        this.source = new File(sourcePath);
+        if (!source.exists()) throw new InvalidFilePathException();
     }
 
     /**
