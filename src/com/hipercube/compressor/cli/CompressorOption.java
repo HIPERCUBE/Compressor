@@ -71,7 +71,7 @@ public enum CompressorOption {
      * [Option]
      * Filter (-f, -filter)
      * <p>
-     * target file filter (regex)
+     * target source file filter (regex)
      */
     Filter,
 

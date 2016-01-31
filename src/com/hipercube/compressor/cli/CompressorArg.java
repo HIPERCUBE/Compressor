@@ -30,5 +30,6 @@ public class CompressorArg {
     public String output;
     public boolean repeat;
     public int cycle;
+    public String filter;
     public String help;
 }

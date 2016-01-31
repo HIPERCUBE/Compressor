@@ -41,6 +41,7 @@ public class CompressorClParser extends DefaultParser {
         options.addOption("o", "output", true, "output directory which zipped file located");
         options.addOption("r", "repeat", true, "whether to continue to work");
         options.addOption("c", "cycle", true, "operation cycle (milli-second)");
+        options.addOption("f", "filter", true, "target source file filter (regex)");
         options.addOption("h", "help", true, "show Compressor helps");
     }
 
@@ -152,6 +153,7 @@ public class CompressorClParser extends DefaultParser {
             arg.output = commandLine.getOptionValue("o");
             arg.repeat = Boolean.parseBoolean(commandLine.getOptionValue("r") != null ? commandLine.getOptionValue("r") : "false");
             arg.cycle = Integer.parseInt(commandLine.getOptionValue("c") != null ? commandLine.getOptionValue("c") : "10");
+            arg.filter = commandLine.getOptionValue("f");
             arg.help = commandLine.getOptionValue("h");
         } catch (Exception e) {
             parseFailed();

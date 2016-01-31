@@ -37,6 +37,7 @@ public class CreateOption {
     private File output;
     public boolean repeat;
     public int cycle;
+    public String filter;
     public String help;
 
     public CreateOption(CompressorArg arg) throws ClParseException {
