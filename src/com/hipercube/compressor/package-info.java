@@ -1,7 +1,5 @@
-package com.hipercube.compressor.cli;
-
 /**
- * Copyright (c) 1/26/16 Joowon Ryoo
+ * Copyright (c) 1/31/16 Joowon Ryoo
  * <p>
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -24,62 +22,4 @@ package com.hipercube.compressor.cli;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public enum CompressorOption {
-    /**
-     * [Option]
-     * Mode (-m, -mode)
-     * <p>
-     * mode parameter
-     * L ZIP   : zip mode
-     * L UNZIP : unzip mode
-     */
-    Mode,
-
-    /**
-     * [Necessary]
-     * Source (-s, -source)
-     * <p>
-     * source directory which original file located
-     */
-    Source,
-
-    /**
-     * [Option]
-     * Output (-o, -output)
-     * <p>
-     * output directory which zipped file located
-     */
-    Output,
-
-    /**
-     * [Option]
-     * Repeat (-r, -repeat)
-     * <p>
-     * whether to continue to work
-     */
-    Repeat,
-
-    /**
-     * [Option]
-     * Cycle (-c, -cycle)
-     * <p>
-     * operation cycle (milli-second)
-     */
-    Cycle,
-
-    /**
-     * [Option]
-     * Filter (-f, -filter)
-     * <p>
-     * target file filter (regex)
-     */
-    Filter,
-
-    /**
-     * [Help]
-     * Help (-h, -help)
-     * <p>
-     * show Compressor helps
-     */
-    Help,
-}
+package com.hipercube.compressor;
