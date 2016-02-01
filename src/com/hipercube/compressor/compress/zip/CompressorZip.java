@@ -27,11 +27,10 @@ import java.util.zip.GZIPOutputStream;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public class CompressorZip implements Zip {
+public class CompressorZip extends Zip {
 
     @Override
     public void compress(File source, File output) throws IOException {
-        File compressedFile = new File(output.getPath());
         long startTime = System.currentTimeMillis();
 
         BufferedReader in = new BufferedReader(new FileReader(source));
