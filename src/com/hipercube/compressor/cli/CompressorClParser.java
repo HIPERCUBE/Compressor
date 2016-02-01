@@ -36,7 +36,7 @@ public class CompressorClParser extends DefaultParser {
      */
     public CompressorClParser() {
         // Add Options
-        options.addOption("m", "mode", true, "set mode 'zip' or 'unzip'");
+        options.addOption("m", "mode", true, "set mode 'compress' or 'unzip'");
         options.addOption("s", "source", true, "source directory which original file located");
         options.addOption("o", "output", true, "output directory which zipped file located");
         options.addOption("r", "repeat", true, "whether to continue to work");

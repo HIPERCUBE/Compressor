@@ -34,9 +34,9 @@ public class ArgMode {
      */
     public MODE mode;
 
-    public static final String MODE_ZIP = "zip";
+    public static final String MODE_ZIP = "compress";
     public static final String MODE_UNZIP = "unzip";
-    public static final String detail = "mode parameter only required 'zip' or 'unzip'";
+    public static final String detail = "mode parameter only required 'compress' or 'unzip'";
 
     /**
      * Constructor
