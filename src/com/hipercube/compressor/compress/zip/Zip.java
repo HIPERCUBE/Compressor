@@ -42,7 +42,7 @@ public abstract class Zip {
      * @throws IOException exception
      */
     public void compress(File source) throws IOException {
-        compress(source, source.getParent());
+        compress(source, source.getParentFile());
     }
 
     /**
