@@ -34,6 +34,17 @@ public class CompressorZip extends Zip {
         long startTime = System.currentTimeMillis();
 
         BufferedReader in = new BufferedReader(new FileReader(source));
-        BufferedOutputStream out = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(source)));
+        BufferedOutputStream out = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(output)));
+
+        String s;
+        while ((s = in.readLine()) != null) {
+            out.write(s.getBytes());
+            out.write("\n".getBytes());
+        }
+        in.close();
+        out.close();
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("compress elapsed time : " + (endTime - startTime) + "ms");
     }
 }
