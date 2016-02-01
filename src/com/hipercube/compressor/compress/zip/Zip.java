@@ -28,6 +28,44 @@ import java.io.IOException;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public interface Zip {
-    void compress(File source, File output) throws IOException;
+
+/**
+ * Zip abstract class
+ */
+public abstract class Zip {
+    /**
+     * Compress
+     * <p>
+     * compress source file at source file parent directory
+     *
+     * @param source source file to compress
+     * @throws IOException exception
+     */
+    public void compress(File source) throws IOException {
+        compress(source, source.getParent());
+    }
+
+    /**
+     * Compress
+     * <p>
+     * compress source file at output file path
+     *
+     * @param source     source file to compress
+     * @param outputPath output file path where compressed file will be locate
+     * @throws IOException exception
+     */
+    public void compress(File source, String outputPath) throws IOException {
+        compress(source, new File(outputPath));
+    }
+
+    /**
+     * Compress
+     * <p>
+     * compress source file at output file
+     *
+     * @param source source file to compress
+     * @param output output file where compressed file will be locate
+     * @throws IOException exception
+     */
+    public abstract void compress(File source, File output) throws IOException;
 }
