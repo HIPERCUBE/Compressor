@@ -2,7 +2,6 @@ package com.hipercube.compressor;
 
 import com.hipercube.compressor.cli.CompressorClParser;
 import com.hipercube.compressor.cli.CreateOption;
-import org.apache.commons.cli.*;
 
 /**
  * Copyright (c) 1/26/16 Joowon Ryoo
@@ -28,9 +27,8 @@ import org.apache.commons.cli.*;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-public class CompressorMain {
-    private static final Options options = new Options();
 
+public class CompressorMain {
     public static void main(String[] args) {
         CreateOption createOption = new CompressorClParser().process(args);
         if (createOption == null) return;

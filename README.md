@@ -1,4 +1,6 @@
 # Compressor
+Compressor is automatic compression utility.
+If you specify target directory, Compressor will compress files which incoming to that directory automatically.
 
 ## LICENSE
 ### MIT License
